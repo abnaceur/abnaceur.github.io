@@ -47,27 +47,54 @@
         body {
             font-family: Poppins, sans-serif;
             font-weight: normal;
+            background-color: black;
+            color: #e0e0e0;
         }
 
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        h1 a,
-        h2 a,
-        h3 a,
-        h4 a,
-        h5 a,
-        h6 a {
-            font-family: "Poppins", sans-serif !important;
-            font-weight: 500 !important;
+        h4 {
+            font-size: 2em;
+            margin: 0.5em 0;
         }
 
-        .cs_nav .cs_nav_list a {
-            font-family: "Poppins", sans-serif !important;
-            font-weight: 500 !important;
+        .contact-info-section {
+            background-color: #1f1f1f;
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 1.25em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.25em;
+        }
+
+        .contact-item i {
+            font-size: 1.5em;
+            color: #e0e0e0;
+        }
+
+        .btn-download {
+            margin-top: 20px;
+            background-color: #212425;
+            color: #e0e0e0;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.2em;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-download:hover {
+            background-color: #444;
         }
     </style>
     <link rel='stylesheet' id='elementor-post-8-css'
@@ -94,13 +121,11 @@
 
 
 
-    <div class="site-page-bg site-page-bg--one"
-        data-background="https://bostami-wp.ibthemespro.com/wp-content/uploads/2023/09/page-bg-1.jpg"></div>
+    <div class="site-page-bg site-page-bg--one" data-background="./main-anim.png"></div>
 
-    <div class="site-page-bg site-page-bg--two inner"
-        data-background="https://bostami-wp.ibthemespro.com/wp-content/uploads/2023/09/page-bg-dark-2.jpg"></div>
+    <!-- <div class="site-page-bg site-page-bg--two inner" data-background="./main-anim.png"></div> -->
 
-    <div id="page" class="site page-wrapper home-1">
+    <div id="page" class="">
 
         <!-- PRELOADER -->
         <div id="preloader">
@@ -110,7 +135,7 @@
 
 
         <!-- header-start -->
-        <div class="bostami-header-area bostami-header-2 z-index-5" style="background-color: #1f1f1f; color: #e0e0e0;">
+        <div class="" style="background-color: #1f1f1f; color: #e0e0e0;">
             <div class="container">
                 <div class="bostami-header-wrap main-style-2">
                     <div class="row align-items-center">
@@ -129,86 +154,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- menu btn -->
-                        <div style="display: none;" class="col-lg-10 col-md-6 col-sm-8 col-8">
-                            <div class="header-right-flex" style="color: #e0e0e0;">
-                                <div class="bostami-main-menu-wrap">
-                                    <nav class="bastami-main-menu main_menu_2">
-                                        <div class="menu-menu-2-container">
-                                            <ul id="primary-menu" class="nav cs_nav_list fw-medium text-uppercase"
-                                                style="color: #e0e0e0;">
-                                                <li id="menu-item-590"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-582 current_page_item menu-item-590 active">
-                                                    <a href="index.html" aria-current="page" style="color: #bb86fc;">
-                                                        <i class="_mi _before fa fa-home" aria-hidden="true"></i>
-                                                        <span>Home</span>
-                                                    </a>
-                                                </li>
-                                                <li id="menu-item-647"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-647">
-                                                    <a href="https://bostami-wp.ibthemespro.com/about-v2/"
-                                                        style="color: #bb86fc;">
-                                                        <i class="_mi _before far fa-address-card"
-                                                            aria-hidden="true"></i>
-                                                        <span>About</span>
-                                                    </a>
-                                                </li>
-                                                <li id="menu-item-650"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-650">
-                                                    <a href="https://bostami-wp.ibthemespro.com/resume-v2/"
-                                                        style="color: #bb86fc;">
-                                                        <i class="_mi _before fa fa-file" aria-hidden="true"></i>
-                                                        <span>Resume</span>
-                                                    </a>
-                                                </li>
-                                                <li id="menu-item-651"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-651">
-                                                    <a href="https://bostami-wp.ibthemespro.com/works-v2/"
-                                                        style="color: #bb86fc;">
-                                                        <i class="_mi _before fa fa-briefcase" aria-hidden="true"></i>
-                                                        <span>Works</span>
-                                                    </a>
-                                                </li>
-                                                <li id="menu-item-648"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-648">
-                                                    <a href="https://bostami-wp.ibthemespro.com/blogs-v2/"
-                                                        style="color: #bb86fc;">
-                                                        <i class="_mi _before far fa-newspaper" aria-hidden="true"></i>
-                                                        <span>Blogs</span>
-                                                    </a>
-                                                </li>
-                                                <li id="menu-item-649"
-                                                    class="menu-item menu-item-type-post_type menu-item-object-page menu-item-649">
-                                                    <a href="https://bostami-wp.ibthemespro.com/contact-v2/"
-                                                        style="color: #bb86fc;">
-                                                        <i class="_mi _before far fa-address-book"
-                                                            aria-hidden="true"></i>
-                                                        <span>Contact</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </nav>
-                                </div>
-                                <div class="bostami-header-menu-btn text-right ml-30">
-                                    <div class="dark-btn dark-btn-2" style="background-color: #121212; color: #bb86fc;">
-                                        <i class="fas fa-moon dark-btn-icon"></i>
-                                    </div>
-                                    <div class="menu-btn-wrap d-lg-none">
-                                        <div class="menu-btn menu-btn-2 toggle_menu">
-                                            <span style="background-color: #e0e0e0;"></span>
-                                            <span style="background-color: #e0e0e0;"></span>
-                                            <span style="background-color: #e0e0e0;"></span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
-                </div>
-                <!-- mobile menu -->
-                <div class="mobile-menu-wrap">
-                    <div class="mobile-menu mobile_menu" style="background-color: #1f1f1f; color: #e0e0e0;"></div>
                 </div>
             </div>
         </div>
@@ -260,14 +207,16 @@
                                                                         </div>
 
                                                                         <!-- name -->
-                                                                        <h4 class="bostami-parsonal-info-name">
-                                                                            <a href="#"> Abdeljalil NACEUR </a>
+                                                                        <h4 class="bostami-parsonal-info-name"
+                                                                            style="color: white; font-size: 30px; font-weight: bold;">
+                                                                            Abdeljalil NACEUR
                                                                         </h4>
-                                                                        <span class="bostami-parsonal-info-bio mb-15">
+                                                                        <span class="bostami-parsonal-info-bio mb-15"
+                                                                            style="color: rgb(105, 102, 102); font-size: 20px;">
                                                                             Information Technology Manager </span>
                                                                         <!-- Contact info -->
                                                                         <section
-                                                                            style="margin-bottom: 26px;"
+                                                                            style="margin-bottom: 26px; margin-top: 20px;"
                                                                             class="elementor-section elementor-inner-section elementor-element elementor-element-bb080e1 elementor-section-boxed elementor-section-height-default elementor-section-height-default"
                                                                             data-id="bb080e1"
                                                                             data-element_type="section">
@@ -285,16 +234,16 @@
                                                                                             <div
                                                                                                 class="elementor-widget-container">
                                                                                                 <div class="bostami-contact-item"
-                                                                                                    style="background-color:#FFF4F4">
+                                                                                                    style="background-color:#212425;">
                                                                                                     <div class="icon">
                                                                                                         <i style="font-size: 34px"
                                                                                                             class="fas fa-phone-alt"></i>
                                                                                                     </div>
-                                                                                                    <div class="text">
-                                                                                                        <p>
-                                                                                                            <a
-                                                                                                                href="tel:+971544110246">+971544110246</a>
-                                                                                                        </p>
+                                                                                                    <div class="text"
+                                                                                                        style="color: white; font-weight: bold; font-size: 24px;">
+                                                                                                        <!-- <h5> -->
+                                                                                                        +971544110246
+                                                                                                        <!-- <h5p> -->
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
@@ -306,7 +255,7 @@
                                                                                             <div
                                                                                                 class="elementor-widget-container">
                                                                                                 <div class="bostami-contact-item"
-                                                                                                    style="background-color:#EEF5FA">
+                                                                                                    style="background-color:#212425">
                                                                                                     <div class="icon">
                                                                                                         <i style="font-size: 34px"
                                                                                                             class="fas fa-envelope"></i>
@@ -314,7 +263,7 @@
                                                                                                     <div class="text">
                                                                                                         <!-- <h5 class="title">Email:</h5> -->
                                                                                                         <p>
-                                                                                                            <a
+                                                                                                            <a style="color: white; font-weight: bold; font-size: 24px;"
                                                                                                                 href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a>
                                                                                                         </p>
                                                                                                     </div>
@@ -328,13 +277,15 @@
                                                                                             <div
                                                                                                 class="elementor-widget-container">
                                                                                                 <div class="bostami-contact-item"
-                                                                                                    style="background-color:#FFF4F4">
+                                                                                                    style="background-color:#212425">
                                                                                                     <div class="icon">
                                                                                                         <i style="font-size: 34px"
                                                                                                             class="fas fa-map-marker-alt"></i>
                                                                                                     </div>
                                                                                                     <div class="text">
-                                                                                                        <p>Abu Dhabi,
+                                                                                                        <p
+                                                                                                            style="color: white; font-weight: bold; font-size: 24px;">
+                                                                                                            Abu Dhabi,
                                                                                                             UAE</p>
                                                                                                     </div>
                                                                                                 </div>
@@ -347,14 +298,15 @@
                                                                                             <div
                                                                                                 class="elementor-widget-container">
                                                                                                 <div class="bostami-contact-item"
-                                                                                                    style="background-color:#EEF5FA">
+                                                                                                    style="background-color:#212425">
                                                                                                     <div class="icon">
                                                                                                         <i style="font-size: 34px"
                                                                                                             class="fas fa-globe"></i>
                                                                                                     </div>
                                                                                                     <div class="text">
                                                                                                         <p>
-                                                                                                            <a href="https://42abudhabi.ae"
+                                                                                                            <a style="color: white; font-weight: bold; font-size: 24px;"
+                                                                                                                href="https://42abudhabi.ae"
                                                                                                                 target="_blank">42abudhabi.ae</a>
                                                                                                         </p>
                                                                                                     </div>
@@ -367,8 +319,7 @@
                                                                         </section>
 
 
-                                                                        <div id="save-contact"
-                                                                        style="margin-top: 65px;"
+                                                                        <div id="save-contact" style="margin-top: 65px;"
                                                                             class="bostami-parsonal-info-btn">
                                                                             <a class="btn-2 circle" href="#">
                                                                                 <span class="icon">
