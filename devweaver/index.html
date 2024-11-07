@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+    <title>Abdeljalil NACEUR</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Abdeljalil NACEUR">
+    <meta name="organization" content="Dev Weaver">
+    <meta name="contact:phone" content="+971544110246">
+    <meta name="contact:email" content="contact@devweaver.com">
+    <meta name="contact:address" content="Dubai, UAE">
+    <meta name="contact:website" content="https://devweaver.com">
+    
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Poppins, sans-serif;
+            background-color: #0D0F4A; /* Updated background color */
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Sticky Header */
+        .header {
+            background-color: #0D0F4A; /* Updated header color */
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header .img-logo img {
+            max-height: 80px;
+            filter: brightness(0.8);
+        }
+
+        /* Main Content */
+        main {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            /* background-image: url('main-anim.png'); */
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Avatar */
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            object-fit: cover;
+        }
+
+        h4 {
+            color: #ffffff;
+            font-size: 2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .bio {
+            color: #b0b3d6;
+            font-size: 1.25em;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Info Section */
+        .contact-info-section {
+            background-color: rgba(240, 240, 240, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: #1a1c5c;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            color: #ffffff;
+        }
+
+        .contact-item i {
+            font-size: 1.5em;
+        }
+
+        .contact-item a, .contact-item p {
+            color: #ffffff;
+            font-weight: bold;
+            margin: 0;
+        }
+
+        /* Save Contact Button */
+        .btn-download {
+            background-color: #1a1c5c;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 1.1em;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-download:hover {
+            background-color: #2d2f7a;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            main {
+                background-size: contain;
+            }
+            h4 {
+                font-size: 1.8em;
+            }
+            .bio {
+                font-size: 1em;
+            }
+            .contact-item {
+                font-size: 1em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h4 {
+                font-size: 1.5em;
+            }
+            .bio {
+                font-size: 0.9em;
+            }
+            .contact-info-section {
+                font-size: 1em;
+                gap: 10px;
+            }
+            .contact-item {
+                font-size: 0.9em;
+            }
+            .btn-download {
+                font-size: 1em;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <div class="img-logo">
+            <a href="https://devweaver.com">
+                <img src="./devweaver-logo.png" alt="Dev Weaver Logo">
+            </a>
+        </div>
+    </header>
+    <div class="container">
+        <main>
+            <img class="avatar" src="https://avatars.githubusercontent.com/u/57463637?v=4" alt="Abdeljalil NACEUR">
+
+            <h4>Abdeljalil NACEUR</h4>
+            <div class="bio">CTO at Dev Weaver</div>
+
+            <section class="contact-info-section">
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <p>+971544110246</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:contact@devweaver.com">contact@devweaver.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <p>Dubai, UAE</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-globe"></i>
+                    <a href="https://devweaver.com" target="_blank">devweaver.com</a>
+                </div>
+            </section>
+
+            <div>
+                <a class="btn-download" href="#" onclick="saveContact()">
+                    <i class="fas fa-download"></i> Save Information
+                </a>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        function saveContact() {
+            const contact = {
+                name: "Abdeljalil NACEUR",
+                tel: ["+971544110246"],
+                email: ["contact@devweaver.com"],
+                address: [{ city: "Dubai", country: "UAE" }],
+                note: "CTO at Dev Weaver",
+                url: "https://devweaver.com"
+            };
+
+            if ("contacts" in navigator && navigator.contacts.save) {
+                navigator.contacts.save(contact)
+                    .then(() => alert("Contact saved successfully!"))
+                    .catch(() => alert("Unable to save contact automatically. Please add manually."));
+            } else {
+                alert("Saving contacts is not supported. Please add contact manually or try on a compatible device.");
+            }
+        }
+    </script>
+</body>
+</html>
