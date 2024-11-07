@@ -22,11 +22,6 @@
             color: #e0e0e0;
             margin: 0;
             padding: 0;
-            /* display: flex; */
-            /* align-items: center; */
-            /* justify-content: center; */
-            /* min-height: 100vh; */
-            /* flex-direction: column; */
         }
 
         /* Container */
@@ -59,11 +54,16 @@
             filter: brightness(0.8);
         }
 
-        /* Main Content */
+        /* Main Content with Background Image */
         main {
             width: 100%;
             max-width: 400px;
             padding: 20px;
+            background-image: url('main-anim.png');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Avatar */
@@ -90,7 +90,7 @@
 
         /* Contact Info Section */
         .contact-info-section {
-            background-color: #1f1f1f;
+            background-color: rgba(31, 31, 31, 0.9);
             padding: 20px;
             border-radius: 8px;
             display: flex;
@@ -142,6 +142,9 @@
 
         /* Responsive Styling */
         @media (max-width: 768px) {
+            main {
+                background-size: contain;
+            }
             h4 {
                 font-size: 1.8em;
             }
@@ -176,27 +179,20 @@
 </head>
 
 <body>
-    <!-- <div class=""> -->
-        <header class="header">
-            <div class="img-logo">
-                <a href="https://42abudhabi.ae">
-                    <img src="https://42abudhabi.ae/wp-content/themes/42ad/images/logo-white-ar.png" alt="42 Abu Dhabi Logo">
-                </a>
-            </div>
-        </header>
-    <!-- </div> -->
+    <header class="header">
+        <div class="img-logo">
+            <a href="https://42abudhabi.ae">
+                <img src="https://42abudhabi.ae/wp-content/themes/42ad/images/logo-white-ar.png" alt="42 Abu Dhabi Logo">
+            </a>
+        </div>
+    </header>
     <div class="container">
-
-
-        <!-- Main Content -->
         <main>
-            <!-- Avatar Image -->
             <img class="avatar" src="https://avatars.githubusercontent.com/u/57463637?v=4" alt="Abdeljalil NACEUR">
 
             <h4>Abdeljalil NACEUR</h4>
             <div class="bio">Information Technology Manager</div>
 
-            <!-- Contact Information Section -->
             <section class="contact-info-section">
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
@@ -216,7 +212,6 @@
                 </div>
             </section>
 
-            <!-- Save Contact Button -->
             <div>
                 <a class="btn-download" href="#" onclick="saveContact()">
                     <i class="fas fa-download"></i> Save Information
@@ -225,24 +220,23 @@
         </main>
     </div>
 
-    <!-- JavaScript for Contact Saving -->
     <script>
         function saveContact() {
-            if ("contacts" in navigator && "ContactsManager" in window && navigator.contacts.save) {
-                const newContact = {
-                    name: "Abdeljalil NACEUR",
-                    tel: ["+971544110246"],
-                    email: ["abdeljalil@42abudhabi.ae"],
-                    address: [{ city: "Abu Dhabi", country: "UAE" }],
-                    note: "Information Technology Manager at 42 Abu Dhabi",
-                    url: "https://42abudhabi.ae"
-                };
-    
-                navigator.contacts.save(newContact)
+            const contact = {
+                name: "Abdeljalil NACEUR",
+                tel: ["+971544110246"],
+                email: ["abdeljalil@42abudhabi.ae"],
+                address: [{ city: "Abu Dhabi", country: "UAE" }],
+                note: "Information Technology Manager at 42 Abu Dhabi",
+                url: "https://42abudhabi.ae"
+            };
+
+            if ("contacts" in navigator && navigator.contacts.save) {
+                navigator.contacts.save(contact)
                     .then(() => alert("Contact saved successfully!"))
-                    .catch((error) => console.error("Error saving contact:", error));
+                    .catch(() => alert("Unable to save contact automatically. Please add manually."));
             } else {
-                alert("Saving contacts is not supported on this device or browser. Please try on a mobile device with compatible support.");
+                alert("AAA Saving contacts is not supported. Please add contact manually or try on a compatible device.");
             }
         }
     </script>
