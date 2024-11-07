@@ -228,7 +228,7 @@
     <!-- JavaScript for Contact Saving -->
     <script>
         function saveContact() {
-            if ("contacts" in navigator && "ContactsManager" in window) {
+            if ("contacts" in navigator && "ContactsManager" in window && navigator.contacts.save) {
                 const newContact = {
                     name: "Abdeljalil NACEUR",
                     tel: ["+971544110246"],
@@ -237,11 +237,12 @@
                     note: "Information Technology Manager at 42 Abu Dhabi",
                     url: "https://42abudhabi.ae"
                 };
+    
                 navigator.contacts.save(newContact)
                     .then(() => alert("Contact saved successfully!"))
                     .catch((error) => console.error("Error saving contact:", error));
             } else {
-                alert("This feature is not supported on your device or browser.");
+                alert("Saving contacts is not supported on this device or browser. Please try on a mobile device with compatible support.");
             }
         }
     </script>
