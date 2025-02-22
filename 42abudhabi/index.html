@@ -23,7 +23,6 @@
             margin: 0;
             padding: 0;
         }
-
         /* Container */
         .container {
             max-width: 1200px;
@@ -34,7 +33,6 @@
             align-items: center;
             text-align: center;
         }
-
         /* Sticky Header */
         .header {
             background-color: #1f1f1f;
@@ -48,12 +46,10 @@
             top: 0;
             z-index: 1000;
         }
-
         .header .img-logo img {
             max-height: 80px;
             filter: brightness(0.8);
         }
-
         /* Main Content with Background Image */
         main {
             width: 100%;
@@ -65,7 +61,6 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-
         /* Avatar */
         .avatar {
             width: 150px;
@@ -74,20 +69,17 @@
             margin-bottom: 15px;
             object-fit: cover;
         }
-
         h4 {
             color: white;
             font-size: 2em;
             font-weight: bold;
             margin: 10px 0;
         }
-
         .bio {
             color: rgb(105, 102, 102);
             font-size: 1.25em;
             margin-bottom: 20px;
         }
-
         /* Contact Info Section */
         .contact-info-section {
             background-color: rgba(31, 31, 31, 0.9);
@@ -99,7 +91,6 @@
             gap: 15px;
             margin: 20px 0;
         }
-
         .contact-item {
             display: flex;
             align-items: center;
@@ -109,18 +100,15 @@
             border-radius: 8px;
             font-size: 1.1em;
         }
-
         .contact-item i {
             font-size: 1.5em;
             color: #e0e0e0;
         }
-
         .contact-item a, .contact-item p {
             color: white;
             font-weight: bold;
             margin: 0;
         }
-
         /* Save Contact Button */
         .btn-download {
             background-color: #212425;
@@ -135,11 +123,9 @@
             transition: background-color 0.3s;
             margin-top: 20px;
         }
-
         .btn-download:hover {
             background-color: #444;
         }
-
         /* Responsive Styling */
         @media (max-width: 768px) {
             main {
@@ -155,7 +141,6 @@
                 font-size: 1em;
             }
         }
-
         @media (max-width: 480px) {
             h4 {
                 font-size: 1.5em;
@@ -177,7 +162,6 @@
         }
     </style>
 </head>
-
 <body>
     <header class="header">
         <div class="img-logo">
@@ -188,11 +172,9 @@
     </header>
     <div class="container">
         <main>
-            <img class="avatar" src="https://avatars.githubusercontent.com/u/57463637?v=4" alt="Abdeljalil NACEUR">
-
+            <img class="avatar" src="./profile.jpeg" alt="Abdeljalil NACEUR">
             <h4>Abdeljalil NACEUR</h4>
-            <div class="bio">Information Technology Manager</div>
-
+            <div class="bio">Chief Technology and Pedagogy Officer</div>
             <section class="contact-info-section">
                 <div class="contact-item">
                     <i class="fas fa-phone-alt"></i>
@@ -210,8 +192,11 @@
                     <i class="fas fa-globe"></i>
                     <a href="https://42abudhabi.ae" target="_blank">42abudhabi.ae</a>
                 </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <a href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a>
+                </div>
             </section>
-
             <div>
                 <a class="btn-download" href="#" onclick="saveContact()">
                     <i class="fas fa-download"></i> Save Information
@@ -227,17 +212,44 @@
                 tel: ["+971544110246"],
                 email: ["abdeljalil@42abudhabi.ae"],
                 address: [{ city: "Abu Dhabi", country: "UAE" }],
-                note: "Information Technology Manager at 42 Abu Dhabi",
+                note: "Chief Technology and Pedagogy Officer at 42 Abu Dhabi",
                 url: "https://42abudhabi.ae"
             };
 
+            // Use the native Contacts API if available
             if ("contacts" in navigator && navigator.contacts.save) {
                 navigator.contacts.save(contact)
                     .then(() => alert("Contact saved successfully!"))
-                    .catch(() => alert("Unable to save contact automatically. Please add manually."));
+                    .catch(() => fallbackSave());
             } else {
-                alert("AAA Saving contacts is not supported. Please add contact manually or try on a compatible device.");
+                fallbackSave();
             }
+        }
+
+        // Fallback function using vCard
+        function fallbackSave() {
+            const vCardData = [
+                "BEGIN:VCARD",
+                "VERSION:3.0",
+                "N:NACEUR;Abdeljalil;;;",
+                "FN:Abdeljalil NACEUR",
+                "TEL;TYPE=cell:+971544110246",
+                "EMAIL:abdeljalil@42abudhabi.ae",
+                "ADR:;;Abu Dhabi;;;UAE",
+                "NOTE:Chief Technology and Pedagogy Officer at 42 Abu Dhabi",
+                "URL:https://42abudhabi.ae",
+                "END:VCARD"
+            ].join("\n");
+
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Abdeljalil_NACEUR.vcf';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            alert("Download started. Open the downloaded file to add the contact.");
         }
     </script>
 </body>
