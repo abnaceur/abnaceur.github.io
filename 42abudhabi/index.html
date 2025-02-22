@@ -207,26 +207,17 @@
 
     <script>
         function saveContact() {
-            const contact = {
-                name: "Abdeljalil NACEUR",
-                tel: ["+971544110246"],
-                email: ["abdeljalil@42abudhabi.ae"],
-                address: [{ city: "Abu Dhabi", country: "UAE" }],
-                note: "Chief Technology and Pedagogy Officer at 42 Abu Dhabi",
-                url: "https://42abudhabi.ae"
-            };
-
-            // Use the native Contacts API if available
-            if ("contacts" in navigator && navigator.contacts.save) {
-                navigator.contacts.save(contact)
-                    .then(() => alert("Contact saved successfully!"))
-                    .catch(() => fallbackSave());
+            // Check if the user agent is Android
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            if (/android/i.test(ua)) {
+                // Use Android intent to open the native "Add Contact" screen with pre-filled details
+                window.location.href = "intent://contacts/people/#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=Abdeljalil%20NACEUR;S.phone=+971544110246;S.email=abdeljalil@42abudhabi.ae;S.postal=Abu%20Dhabi%2C%20UAE;S.note=Chief%20Technology%20and%20Pedagogy%20Officer%20at%2042%20Abu%20Dhabi;S.company=42%20Abu%20Dhabi;S.website=https%3A%2F%2F42abudhabi.ae;end";
             } else {
+                // For iOS and other devices, fallback to downloading a vCard file
                 fallbackSave();
             }
         }
 
-        // Fallback function using vCard
         function fallbackSave() {
             const vCardData = [
                 "BEGIN:VCARD",
@@ -237,6 +228,7 @@
                 "EMAIL:abdeljalil@42abudhabi.ae",
                 "ADR:;;Abu Dhabi;;;UAE",
                 "NOTE:Chief Technology and Pedagogy Officer at 42 Abu Dhabi",
+                "ORG:42 Abu Dhabi",
                 "URL:https://42abudhabi.ae",
                 "END:VCARD"
             ].join("\n");
