@@ -1,254 +1,277 @@
 <!doctype html>
 <html lang="en-US">
 <head>
-    <title>Abdeljalil NACEUR</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Abdeljalil NACEUR">
-    <meta name="organization" content="42 Abu Dhabi">
-    <meta name="contact:phone" content="+971544110246">
-    <meta name="contact:email" content="abdeljalil@42abudhabi.ae">
-    <meta name="contact:address" content="Abu Dhabi, UAE">
-    <meta name="contact:website" content="https://42abudhabi.ae">
+  <title>Abdeljalil NACEUR</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Abdeljalil NACEUR">
+  <meta name="organization" content="42 Abu Dhabi">
+  <meta name="contact:phone" content="+971544110246">
+  <meta name="contact:email" content="abdeljalil@42abudhabi.ae">
+  <meta name="contact:address" content="Abu Dhabi, UAE">
+  <meta name="contact:website" content="https://42abudhabi.ae">
 
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <style>
-        /* Global Styles */
-        body {
-            font-family: Poppins, sans-serif;
-            background-color: black;
-            color: #e0e0e0;
-            margin: 0;
-            padding: 0;
-        }
-        /* Container */
-        .container {
-            max-width: 1200px;
-            width: 100%;
-            padding: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
-        /* Sticky Header */
-        .header {
-            background-color: #1f1f1f;
-            color: #e0e0e0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px;
-            width: 100%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .header .img-logo img {
-            max-height: 80px;
-            filter: brightness(0.8);
-        }
-        /* Main Content with Background Image */
-        main {
-            width: 100%;
-            max-width: 400px;
-            padding: 20px;
-            background-image: url('main-anim.png');
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-        /* Avatar */
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            object-fit: cover;
-        }
-        h4 {
-            color: white;
-            font-size: 2em;
-            font-weight: bold;
-            margin: 10px 0;
-        }
-        .bio {
-            color: rgb(105, 102, 102);
-            font-size: 1.25em;
-            margin-bottom: 20px;
-        }
-        /* Contact Info Section */
-        .contact-info-section {
-            background-color: rgba(31, 31, 31, 0.9);
-            padding: 20px;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            background-color: #212425;
-            padding: 15px;
-            border-radius: 8px;
-            font-size: 1.1em;
-        }
-        .contact-item i {
-            font-size: 1.5em;
-            color: #e0e0e0;
-        }
-        .contact-item a, .contact-item p {
-            color: white;
-            font-weight: bold;
-            margin: 0;
-        }
-        /* Save Contact Button */
-        .btn-download {
-            background-color: #212425;
-            color: #e0e0e0;
-            padding: 10px 20px;
-            text-decoration: none;
-            font-size: 1.1em;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.3s;
-            margin-top: 20px;
-        }
-        .btn-download:hover {
-            background-color: #444;
-        }
-        /* Responsive Styling */
-        @media (max-width: 768px) {
-            main {
-                background-size: contain;
-            }
-            h4 {
-                font-size: 1.8em;
-            }
-            .bio {
-                font-size: 1em;
-            }
-            .contact-item {
-                font-size: 1em;
-            }
-        }
-        @media (max-width: 480px) {
-            h4 {
-                font-size: 1.5em;
-            }
-            .bio {
-                font-size: 0.9em;
-            }
-            .contact-info-section {
-                font-size: 1em;
-                gap: 10px;
-            }
-            .contact-item {
-                font-size: 0.9em;
-            }
-            .btn-download {
-                font-size: 1em;
-                padding: 8px 15px;
-            }
-        }
-    </style>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Poppins, sans-serif;
+      background-color: black;
+      color: #e0e0e0;
+      margin: 0;
+      padding: 0;
+    }
+    /* Container */
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    /* Sticky Header */
+    .header {
+      background-color: #1f1f1f;
+      color: #e0e0e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 15px;
+      width: 100%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .header .img-logo img {
+      max-height: 80px;
+      filter: brightness(0.8);
+    }
+    /* Main Content with Background Image */
+    main {
+      width: 100%;
+      max-width: 400px;
+      padding: 20px;
+      background-image: url('main-anim.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    /* Avatar */
+    .avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+    h4 {
+      color: white;
+      font-size: 2em;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+    .bio {
+      color: rgb(105, 102, 102);
+      font-size: 1.25em;
+      margin-bottom: 20px;
+    }
+    /* Contact Info Section */
+    .contact-info-section {
+      background-color: rgba(31, 31, 31, 0.9);
+      padding: 20px;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background-color: #212425;
+      padding: 15px;
+      border-radius: 8px;
+      font-size: 1.1em;
+    }
+    .contact-item i {
+      font-size: 1.5em;
+      color: #e0e0e0;
+    }
+    .contact-item a,
+    .contact-item p {
+      color: white;
+      font-weight: bold;
+      margin: 0;
+    }
+    /* Save Contact Button */
+    .btn-download {
+      background-color: #212425;
+      color: #e0e0e0;
+      padding: 10px 20px;
+      text-decoration: none;
+      font-size: 1.1em;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background-color 0.3s;
+      margin-top: 20px;
+    }
+    .btn-download:hover {
+      background-color: #444;
+    }
+    /* Responsive Styling */
+    @media (max-width: 768px) {
+      main {
+        background-size: contain;
+      }
+      h4 {
+        font-size: 1.8em;
+      }
+      .bio {
+        font-size: 1em;
+      }
+      .contact-item {
+        font-size: 1em;
+      }
+    }
+    @media (max-width: 480px) {
+      h4 {
+        font-size: 1.5em;
+      }
+      .bio {
+        font-size: 0.9em;
+      }
+      .contact-info-section {
+        font-size: 1em;
+        gap: 10px;
+      }
+      .contact-item {
+        font-size: 0.9em;
+      }
+      .btn-download {
+        font-size: 1em;
+        padding: 8px 15px;
+      }
+    }
+  </style>
+
+  <!-- Force open in Chrome on iOS if not already in Chrome -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Only run on iOS devices not already using Chrome (user agent "CriOS")
+      if (/iP(hone|od|ad)/.test(navigator.platform) && !navigator.userAgent.includes("CriOS")) {
+        // Replace http(s):// with googlechrome://
+        var currentURL = window.location.href;
+        var chromeURL = currentURL.replace(/^https?:\/\//, 'googlechrome://');
+        // Redirect to Chrome URL scheme after a slight delay
+        setTimeout(function() {
+          window.location = chromeURL;
+        }, 500);
+      }
+    });
+  </script>
 </head>
 <body>
-    <header class="header">
-        <div class="img-logo">
-            <a href="https://42abudhabi.ae">
-                <img src="./42ad.png" alt="42 Abu Dhabi Logo">
-            </a>
-        </div>
-    </header>
-    <div class="container">
-        <main>
-            <img class="avatar" src="./profile.jpeg" alt="Abdeljalil NACEUR">
-            <h4>Abdeljalil NACEUR</h4>
-            <div class="bio">Chief Technology and Pedagogy Officer</div>
-            <section class="contact-info-section">
-                <div class="contact-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <p>+971544110246</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <p>Abu Dhabi, UAE</p>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-globe"></i>
-                    <a href="https://42abudhabi.ae" target="_blank">42abudhabi.ae</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fab fa-linkedin"></i>
-                    <a href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a>
-                </div>
-            </section>
-            <div>
-                <a class="btn-download" href="#" onclick="saveContact()">
-                    <i class="fas fa-download"></i> Save Information
-                </a>
-            </div>
-        </main>
+  <header class="header">
+    <div class="img-logo">
+      <a href="https://42abudhabi.ae">
+        <img src="./42ad.png" alt="42 Abu Dhabi Logo">
+      </a>
     </div>
+  </header>
+  <div class="container">
+    <main>
+      <img class="avatar" src="./profile-3.png" alt="Abdeljalil NACEUR">
+      <h4>Abdeljalil NACEUR</h4>
+      <div class="bio">Chief Technology and Pedagogy Officer</div>
+      <section class="contact-info-section">
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <p>+971544110246</p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>Abu Dhabi, UAE</p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-globe"></i>
+          <a href="https://42abudhabi.ae" target="_blank">42abudhabi.ae</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a>
+        </div>
+      </section>
+      <div>
+        <a class="btn-download" href="#" onclick="saveContact()">
+          <i class="fas fa-download"></i> Save Information
+        </a>
+      </div>
+    </main>
+  </div>
 
-    <script>
-        function saveContact() {
-            // Check if the device is Android
-            var ua = navigator.userAgent || navigator.vendor || window.opera;
-            if (/android/i.test(ua)) {
-                // Use Android intent to open the native "Add Contact" screen with pre-filled details
-                window.location.href = "intent://contacts/people/#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=Abdeljalil%20NACEUR;S.phone=+971544110246;S.email=abdeljalil@42abudhabi.ae;S.postal=Abu%20Dhabi%2C%20UAE;S.note=Chief%20Technology%20and%20Pedagogy%20Officer%20at%2042%20Abu%20Dhabi;S.company=42%20Abu%20Dhabi;S.website=https%3A%2F%2F42abudhabi.ae;end";
-            } else {
-                fallbackSave();
-            }
-        }
+  <script>
+    function saveContact() {
+      // Check if the device is Android
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(ua)) {
+        // Use Android intent to open the native "Add Contact" screen with pre-filled details
+        // (Note: Android does not support pre-filling a contact photo via the intent URL)
+        window.location.href = "intent://contacts/people/#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=Abdeljalil%20NACEUR;S.phone=+971544110246;S.email=abdeljalil@42abudhabi.ae;S.postal=Abu%20Dhabi%2C%20UAE;S.note=Chief%20Technology%20and%20Pedagogy%20Officer%20at%2042%20Abu%20Dhabi;S.company=42%20Abu%20Dhabi;S.website=https%3A%2F%2F42abudhabi.ae;end";
+      } else {
+        fallbackSave();
+      }
+    }
 
-        function fallbackSave() {
-            const vCardData = [
-                "BEGIN:VCARD",
-                "VERSION:3.0",
-                "N:NACEUR;Abdeljalil;;;",
-                "FN:Abdeljalil NACEUR",
-                "TEL;TYPE=cell:+971544110246",
-                "EMAIL:abdeljalil@42abudhabi.ae",
-                "ADR:;;Abu Dhabi;;;UAE",
-                "NOTE:Chief Technology and Pedagogy Officer at 42 Abu Dhabi",
-                "ORG:42 Abu Dhabi",
-                "URL:https://42abudhabi.ae",
-                "END:VCARD"
-            ].join("\n");
+    function fallbackSave() {
+      // Replace the following base64 string with your actual base64-encoded JPEG data
+      const base64Photo = "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCABkAGQDAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/9oADAMBAAIRAxEAPwD7P//Z";
 
-            // Detect iOS devices
-            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                // iOS Safari does not support the download attribute so we use a data URI
-                window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
-            } else {
-                // For other devices, create a blob and use the download attribute
-                const blob = new Blob([vCardData], { type: 'text/vcard' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = 'Abdeljalil_NACEUR.vcf';
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                alert("Download started. Open the downloaded file to add the contact.");
-            }
-        }
-    </script>
+      const vCardData = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:NACEUR;Abdeljalil;;;",
+        "FN:Abdeljalil NACEUR",
+        // Include the profile photo (replace the base64Photo with your actual data)
+        "PHOTO;ENCODING=BASE64;TYPE=JPEG:" + base64Photo,
+        "TEL;TYPE=cell:+971544110246",
+        "EMAIL:abdeljalil@42abudhabi.ae",
+        "ADR:;;Abu Dhabi;;;UAE",
+        "NOTE:Chief Technology and Pedagogy Officer at 42 Abu Dhabi",
+        "ORG:42 Abu Dhabi",
+        "URL:https://42abudhabi.ae",
+        "END:VCARD"
+      ].join("\n");
+
+      // Detect iOS devices
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        // iOS Safari does not support the download attribute so use a data URI
+        window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+      } else {
+        // For other devices, create a Blob and use the download attribute
+        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Abdeljalil_NACEUR.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        alert("Download started. Open the downloaded file to add the contact.");
+      }
+    }
+  </script>
 </body>
 </html>
