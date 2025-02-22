@@ -207,13 +207,12 @@
 
     <script>
         function saveContact() {
-            // Check if the user agent is Android
+            // Check if the device is Android
             var ua = navigator.userAgent || navigator.vendor || window.opera;
             if (/android/i.test(ua)) {
                 // Use Android intent to open the native "Add Contact" screen with pre-filled details
                 window.location.href = "intent://contacts/people/#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=Abdeljalil%20NACEUR;S.phone=+971544110246;S.email=abdeljalil@42abudhabi.ae;S.postal=Abu%20Dhabi%2C%20UAE;S.note=Chief%20Technology%20and%20Pedagogy%20Officer%20at%2042%20Abu%20Dhabi;S.company=42%20Abu%20Dhabi;S.website=https%3A%2F%2F42abudhabi.ae;end";
             } else {
-                // For iOS and other devices, fallback to downloading a vCard file
                 fallbackSave();
             }
         }
@@ -233,15 +232,22 @@
                 "END:VCARD"
             ].join("\n");
 
-            const blob = new Blob([vCardData], { type: 'text/vcard' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'Abdeljalil_NACEUR.vcf';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            alert("Download started. Open the downloaded file to add the contact.");
+            // Detect iOS devices
+            if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                // iOS Safari does not support the download attribute so we use a data URI
+                window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+            } else {
+                // For other devices, create a blob and use the download attribute
+                const blob = new Blob([vCardData], { type: 'text/vcard' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'Abdeljalil_NACEUR.vcf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                alert("Download started. Open the downloaded file to add the contact.");
+            }
         }
     </script>
 </body>
