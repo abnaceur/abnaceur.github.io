@@ -11,241 +11,352 @@
   <meta name="contact:address" content="Abu Dhabi, UAE">
   <meta name="contact:website" content="https://42abudhabi.ae">
 
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
-    /* Global Styles */
-    body {
-      font-family: Poppins, sans-serif;
-      background-color: black;
-      color: #e0e0e0;
+    :root {
+      --color-bg: #000;
+      --color-surface: #1a1a1a;
+      --color-accent: #00ffff;
+      --color-text: #eaeaea;
+      --color-text-muted: #9a9a9a;
+      --radius: 12px;
+      --transition: 0.3s ease;
+      --font-family: "Poppins", sans-serif;
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    /* Container */
-    .container {
-      max-width: 1200px;
-      width: 100%;
-      padding: 15px;
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover {
+      color: #7ffcff;
+    }
+
+    /* ========= GAMIFIED LOADER ========= */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #000 40%, #02121f 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      color: var(--color-accent);
       text-align: center;
     }
-    /* Sticky Header */
+
+    #loader img {
+      width: 120px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.7));
+      animation: logoGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      0% { opacity: 0.6; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1.02); }
+    }
+
+    .orb {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.3), rgba(0,255,255,0.05));
+      box-shadow: 0 0 25px var(--color-accent), inset 0 0 20px rgba(0,255,255,0.3);
+      animation: spinOrb 2s linear infinite;
+    }
+
+    .ring {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 2px solid rgba(0,255,255,0.4);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotateRing 2s linear infinite;
+    }
+
+    .ring::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px var(--color-accent);
+    }
+
+    @keyframes spinOrb {
+      0% { transform: rotateY(0deg) rotateX(0deg); }
+      100% { transform: rotateY(360deg) rotateX(360deg); }
+    }
+
+    @keyframes rotateRing {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .loading-text {
+      margin-top: 24px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px var(--color-accent);
+      animation: flicker 1.2s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .progress-bar {
+      width: 180px;
+      height: 8px;
+      background: rgba(0,255,255,0.1);
+      border-radius: 10px;
+      margin-top: 16px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--color-accent);
+      animation: fillBar 2s linear forwards;
+    }
+
+    @keyframes fillBar {
+      to { width: 100%; }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+      pointer-events: none;
+    }
+
+    /* ========= HEADER ========= */
     .header {
-      background-color: #1f1f1f;
-      color: #e0e0e0;
+      background-color: rgba(0,0,0,0.7);
       display: flex;
-      align-items: center;
       justify-content: center;
-      padding: 15px;
-      width: 100%;
+      align-items: center;
+      padding: 1rem;
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
     }
-    .header .img-logo img {
-      max-height: 80px;
-      filter: brightness(0.8);
+
+    .header img {
+      width: 90px;
+      filter: brightness(1);
+      transition: transform var(--transition);
     }
-    /* Main Content with Background Image */
+
+    .header img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ========= LAYOUT ========= */
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+
     main {
-      width: 100%;
-      max-width: 400px;
-      padding: 20px;
       background-image: url('main-anim.png');
       background-size: cover;
       background-position: center;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      border-radius: var(--radius);
+      padding: clamp(1.5rem, 4vw, 2rem);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.05);
     }
-    /* Avatar */
+
     .avatar {
-      width: 150px;
-      height: 150px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
-      margin-bottom: 15px;
       object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.15);
+      margin: 0 auto 1.25rem;
     }
+
     h4 {
-      color: white;
-      font-size: 2em;
-      font-weight: bold;
-      margin: 10px 0;
+      font-weight: 600;
+      font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+      margin-bottom: 0.25rem;
+      color: #fff;
     }
+
     .bio {
-      color: rgb(105, 102, 102);
-      font-size: 1.25em;
-      margin-bottom: 20px;
+      color: var(--color-text-muted);
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      margin-bottom: 1.5rem;
     }
-    /* Contact Info Section */
+
     .contact-info-section {
-      background-color: rgba(31, 31, 31, 0.9);
-      padding: 20px;
-      border-radius: 8px;
+      background: rgba(31, 31, 31, 0.9);
+      border-radius: var(--radius);
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      gap: 15px;
-      margin: 20px 0;
+      gap: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
     }
+
     .contact-item {
       display: flex;
       align-items: center;
-      gap: 10px;
-      background-color: #212425;
-      padding: 15px;
-      border-radius: 8px;
-      font-size: 1.1em;
+      gap: 12px;
+      background: #212425;
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      transition: background var(--transition);
     }
+
+    .contact-item:hover {
+      background: rgba(0, 255, 255, 0.1);
+    }
+
     .contact-item i {
-      font-size: 1.5em;
-      color: #e0e0e0;
+      font-size: 1.3em;
+      color: var(--color-accent);
+      min-width: 24px;
+      text-align: center;
     }
-    .contact-item a,
-    .contact-item p {
-      color: white;
-      font-weight: bold;
+
+    .contact-item a, .contact-item p {
+      font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+      font-weight: 500;
+      color: var(--color-text);
       margin: 0;
     }
-    /* Save Contact Button */
+
     .btn-download {
-      background-color: #212425;
-      color: #e0e0e0;
-      padding: 10px 20px;
-      text-decoration: none;
-      font-size: 1.1em;
-      border-radius: 8px;
+      background: var(--color-accent);
+      color: #000;
+      font-weight: 600;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius);
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      transition: background-color 0.3s;
-      margin-top: 20px;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      transition: all var(--transition);
     }
+
     .btn-download:hover {
-      background-color: #444;
+      background: #7ffcff;
+      transform: translateY(-2px);
     }
-    /* Responsive Styling */
-    @media (max-width: 768px) {
-      main {
-        background-size: contain;
-      }
-      h4 {
-        font-size: 1.8em;
-      }
-      .bio {
-        font-size: 1em;
-      }
-      .contact-item {
-        font-size: 1em;
-      }
-    }
+
     @media (max-width: 480px) {
-      h4 {
-        font-size: 1.5em;
+      main {
+        padding: 1.25rem;
       }
-      .bio {
-        font-size: 0.9em;
-      }
-      .contact-info-section {
-        font-size: 1em;
-        gap: 10px;
-      }
-      .contact-item {
-        font-size: 0.9em;
-      }
-      .btn-download {
-        font-size: 1em;
-        padding: 8px 15px;
+      .avatar {
+        width: 120px;
+        height: 120px;
       }
     }
   </style>
-
-  <!-- Force open in Chrome on iOS if not already in Chrome -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      // Only run on iOS devices not already using Chrome (user agent "CriOS")
-      if (/iP(hone|od|ad)/.test(navigator.platform) && !navigator.userAgent.includes("CriOS")) {
-        // Replace http(s):// with googlechrome://
-        var currentURL = window.location.href;
-        var chromeURL = currentURL.replace(/^https?:\/\//, 'googlechrome://');
-        // Redirect to Chrome URL scheme after a slight delay
-        setTimeout(function() {
-          window.location = chromeURL;
-        }, 500);
-      }
-    });
-  </script>
 </head>
+
 <body>
-  <header class="header">
-    <div class="img-logo">
-      <a href="https://42abudhabi.ae">
-        <img  style="width: 100px" src="./42ad.png" alt="42 Abu Dhabi Logo">
-      </a>
-    </div>
-  </header>
-  <div class="container">
+  <!-- GAMIFIED LOADER -->
+  <div id="loader">
+    <img src="./42ad.png" alt="42 Abu Dhabi Logo">
+    <div class="orb"></div>
+    <div class="ring"></div>
+    <div class="loading-text" id="loadingText">Booting System...</div>
+    <div class="progress-bar"><div class="progress-fill"></div></div>
+  </div>
+
+  <!-- HEADER -->
+  <!-- <header class="header">
+    <a href="https://42abudhabi.ae">
+      <img src="./42ad.png" alt="42 Abu Dhabi Logo">
+    </a>
+  </header> -->
+
+  <!-- MAIN -->
+  <div class="container" id="mainContent" style="display:none;">
     <main>
       <img class="avatar" src="./profile-3.png" alt="Abdeljalil NACEUR">
       <h4>Abdeljalil NACEUR</h4>
       <div class="bio">Chief Technology and Pedagogy Officer</div>
+
       <section class="contact-info-section">
-        <div class="contact-item">
-          <i class="fas fa-phone-alt"></i>
-          <p>+971544110246</p>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt"></i>
-          <p>Abu Dhabi, UAE</p>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-globe"></i>
-          <a href="https://42abudhabi.ae" target="_blank">42abudhabi.ae</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-linkedin"></i>
-          <a href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a>
-        </div>
+        <div class="contact-item"><i class="fas fa-phone-alt"></i><p>+971544110246</p></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><p>Abu Dhabi, UAE</p></div>
+        <div class="contact-item"><i class="fas fa-globe"></i><a href="https://42abudhabi.ae" target="_blank">42abudhabi.ae</a></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a></div>
       </section>
-      <div>
-        <a class="btn-download" href="#" onclick="saveContact()">
-          <i class="fas fa-download"></i> Save Information
-        </a>
-      </div>
+
+      <a class="btn-download" href="#" onclick="saveContact()">
+        <i class="fas fa-download"></i> Save Information
+      </a>
     </main>
   </div>
 
   <script>
+    const text = document.getElementById("loadingText");
+    const messages = ["Booting System...", "Initializing Protocols...", "Deploying Interface...", "Ready!"];
+    let i = 0;
+    const messageInterval = setInterval(() => {
+      text.textContent = messages[i];
+      i++;
+      if (i >= messages.length) clearInterval(messageInterval);
+    }, 500);
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").classList.add("fade-out");
+        setTimeout(() => {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("mainContent").style.display = "flex";
+        }, 600);
+      }, 2000);
+    });
+
     function saveContact() {
-      // Check if the device is Android
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      if (/android/i.test(ua)) {
-        // Use Android intent to open the native "Add Contact" screen with pre-filled details
-        // (Note: Android does not support pre-filling a contact photo via the intent URL)
-        window.location.href = "intent://contacts/people/#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=Abdeljalil%20NACEUR;S.phone=+971544110246;S.email=abdeljalil@42abudhabi.ae;S.postal=Abu%20Dhabi%2C%20UAE;S.note=Chief%20Technology%20and%20Pedagogy%20Officer%20at%2042%20Abu%20Dhabi;S.company=42%20Abu%20Dhabi;S.website=https%3A%2F%2F42abudhabi.ae;end";
-      } else {
-        fallbackSave();
-      }
-    }
-
-    function fallbackSave() {
-      // Replace the following base64 string with your actual base64-encoded JPEG data
-      const base64Photo = "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCABkAGQDAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/9oADAMBAAIRAxEAPwD7P//Z";
-
       const vCardData = [
         "BEGIN:VCARD",
         "VERSION:3.0",
         "N:NACEUR;Abdeljalil;;;",
         "FN:Abdeljalil NACEUR",
-        // Include the profile photo (replace the base64Photo with your actual data)
-        "PHOTO;ENCODING=BASE64;TYPE=JPEG:" + base64Photo,
         "TEL;TYPE=cell:+971544110246",
         "EMAIL:abdeljalil@42abudhabi.ae",
         "ADR:;;Abu Dhabi;;;UAE",
@@ -255,22 +366,15 @@
         "END:VCARD"
       ].join("\n");
 
-      // Detect iOS devices
-      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // iOS Safari does not support the download attribute so use a data URI
-        window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
-      } else {
-        // For other devices, create a Blob and use the download attribute
-        const blob = new Blob([vCardData], { type: 'text/vcard' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Abdeljalil_NACEUR.vcf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        alert("Download started. Open the downloaded file to add the contact.");
-      }
+      const blob = new Blob([vCardData], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Abdeljalil_NACEUR.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      alert("Download started. Open the downloaded file to add the contact.");
     }
   </script>
 </body>
