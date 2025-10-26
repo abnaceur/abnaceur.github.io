@@ -331,13 +331,13 @@
       <div class="progress-fill"></div>
     </div> -->
   </div>
-
-  <!-- HEADER -->
-  <!-- <header class="header">
-    <a href="https://42abudhabi.ae">
-      <img src="./42ad.png" alt="42 Abu Dhabi Logo">
-    </a>
-  </header> -->
+  </div>
+  <!-- <div class="ring"></div> -->
+  <!-- <div class="loading-text" id="loadingText">Booting System...</div> -->
+  <!-- <div class="progress-bar">
+    <div class="progress-fill"></div>
+  </div> -->
+  </header>
 
   <!-- MAIN -->
   <div class="container" id="mainContent" style="display:none;">
@@ -401,18 +401,27 @@
         "ORG:42 Abu Dhabi",
         "URL:https://42abudhabi.ae",
         "END:VCARD"
-      ].join("\n");
+      ].join("\r\n");
 
-      const blob = new Blob([vCardData], { type: 'text/vcard' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Abdeljalil_NACEUR.vcf';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      alert("Download started. Open the downloaded file to add the contact.");
+      try {
+        const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Abdeljalil_NACEUR.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } catch (e) {
+        // Fallback for Safari/iOS
+        const vCardEncoded = encodeURIComponent(vCardData);
+        window.location.href = 'data:text/vcard;charset=utf-8,' + vCardEncoded;
+      }
+
+      alert("Contact card saved! Open it to add Abdeljalil NACEUR to your contacts.");
     }
+
+
   </script>
 </body>
 
