@@ -324,10 +324,12 @@
   <!-- GAMIFIED LOADER -->
   <div id="loader">
     <img src="./42ad.png" alt="42 Abu Dhabi Logo">
-    <div class="orb"></div>
+    <!-- <div class="orb"></div>
     <div class="ring"></div>
-    <!-- <div class="loading-text" id="loadingText">Booting System...</div> -->
-    <!-- <div class="progress-bar"><div class="progress-fill"></div></div> -->
+    <div class="loading-text" id="loadingText">Booting System...</div>
+    <div class="progress-bar">
+      <div class="progress-fill"></div>
+    </div> -->
   </div>
 
   <!-- HEADER -->
@@ -366,29 +368,32 @@
   </div>
 
   <script>
+    const text = document.getElementById("loadingText");
+    const messages = ["Booting System...", "Initializing Protocols...", "Deploying Interface...", "Ready!"];
+    let i = 0;
+    const messageInterval = setInterval(() => {
+      text.textContent = messages[i];
+      i++;
+      if (i >= messages.length) clearInterval(messageInterval);
+    }, 500);
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").classList.add("fade-out");
+        setTimeout(() => {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("mainContent").style.display = "flex";
+        }, 600);
+      }, 2000);
+    });
+
+
     function saveContact() {
-      // Check if the device is Android
-      var ua = navigator.userAgent || navigator.vendor || window.opera;
-      if (/android/i.test(ua)) {
-        // Use Android intent to open the native "Add Contact" screen with pre-filled details
-        // (Note: Android does not support pre-filling a contact photo via the intent URL)
-        window.location.href = "intent://contacts/people/#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=Abdeljalil%20NACEUR;S.phone=+971544110246;S.email=abdeljalil@42abudhabi.ae;S.postal=Abu%20Dhabi%2C%20UAE;S.note=Chief%20Technology%20and%20Pedagogy%20Officer%20at%2042%20Abu%20Dhabi;S.company=42%20Abu%20Dhabi;S.website=https%3A%2F%2F42abudhabi.ae;end";
-      } else {
-        fallbackSave();
-      }
-    }
-
-    function fallbackSave() {
-      // Replace the following base64 string with your actual base64-encoded JPEG data
-      const base64Photo = "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCABkAGQDAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/9oADAMBAAIRAxEAPwD7P//Z";
-
       const vCardData = [
         "BEGIN:VCARD",
         "VERSION:3.0",
         "N:NACEUR;Abdeljalil;;;",
         "FN:Abdeljalil NACEUR",
-        // Include the profile photo (replace the base64Photo with your actual data)
-        "PHOTO;ENCODING=BASE64;TYPE=JPEG:" + base64Photo,
         "TEL;TYPE=cell:+971544110246",
         "EMAIL:abdeljalil@42abudhabi.ae",
         "ADR:;;Abu Dhabi;;;UAE",
@@ -398,22 +403,15 @@
         "END:VCARD"
       ].join("\n");
 
-      // Detect iOS devices
-      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-        // iOS Safari does not support the download attribute so use a data URI
-        window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
-      } else {
-        // For other devices, create a Blob and use the download attribute
-        const blob = new Blob([vCardData], { type: 'text/vcard' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Abdeljalil_NACEUR.vcf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        alert("Download started. Open the downloaded file to add the contact.");
-      }
+      const blob = new Blob([vCardData], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Abdeljalil_NACEUR.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      alert("Download started. Open the downloaded file to add the contact.");
     }
   </script>
 </body>
