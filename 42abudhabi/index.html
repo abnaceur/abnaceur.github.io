@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en-US">
+
 <head>
   <title>Abdeljalil NACEUR</title>
   <meta charset="UTF-8">
@@ -68,13 +69,20 @@
     #loader img {
       width: 120px;
       margin-bottom: 20px;
-      filter: drop-shadow(0 0 15px rgba(0,255,255,0.7));
+      filter: drop-shadow(0 0 15px rgba(0, 255, 255, 0.7));
       animation: logoGlow 2s ease-in-out infinite alternate;
     }
 
     @keyframes logoGlow {
-      0% { opacity: 0.6; transform: scale(0.98); }
-      100% { opacity: 1; transform: scale(1.02); }
+      0% {
+        opacity: 0.6;
+        transform: scale(0.98);
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1.02);
+      }
     }
 
     .orb {
@@ -82,8 +90,8 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,255,255,0.3), rgba(0,255,255,0.05));
-      box-shadow: 0 0 25px var(--color-accent), inset 0 0 20px rgba(0,255,255,0.3);
+      background: radial-gradient(circle, rgba(0, 255, 255, 0.3), rgba(0, 255, 255, 0.05));
+      box-shadow: 0 0 25px var(--color-accent), inset 0 0 20px rgba(0, 255, 255, 0.3);
       animation: spinOrb 2s linear infinite;
     }
 
@@ -91,7 +99,7 @@
       position: absolute;
       width: 120px;
       height: 120px;
-      border: 2px solid rgba(0,255,255,0.4);
+      border: 2px solid rgba(0, 255, 255, 0.4);
       border-radius: 50%;
       top: 50%;
       left: 50%;
@@ -113,13 +121,23 @@
     }
 
     @keyframes spinOrb {
-      0% { transform: rotateY(0deg) rotateX(0deg); }
-      100% { transform: rotateY(360deg) rotateX(360deg); }
+      0% {
+        transform: rotateY(0deg) rotateX(0deg);
+      }
+
+      100% {
+        transform: rotateY(360deg) rotateX(360deg);
+      }
     }
 
     @keyframes rotateRing {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
+      from {
+        transform: translate(-50%, -50%) rotate(0deg);
+      }
+
+      to {
+        transform: translate(-50%, -50%) rotate(360deg);
+      }
     }
 
     .loading-text {
@@ -131,14 +149,19 @@
     }
 
     @keyframes flicker {
-      0% { opacity: 0.5; }
-      100% { opacity: 1; }
+      0% {
+        opacity: 0.5;
+      }
+
+      100% {
+        opacity: 1;
+      }
     }
 
     .progress-bar {
       width: 180px;
       height: 8px;
-      background: rgba(0,255,255,0.1);
+      background: rgba(0, 255, 255, 0.1);
       border-radius: 10px;
       margin-top: 16px;
       overflow: hidden;
@@ -152,7 +175,9 @@
     }
 
     @keyframes fillBar {
-      to { width: 100%; }
+      to {
+        width: 100%;
+      }
     }
 
     .fade-out {
@@ -163,7 +188,7 @@
 
     /* ========= HEADER ========= */
     .header {
-      background-color: rgba(0,0,0,0.7);
+      background-color: rgba(0, 0, 0, 0.7);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -207,7 +232,7 @@
       height: 140px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid rgba(255,255,255,0.15);
+      border: 2px solid rgba(255, 255, 255, 0.15);
       margin: 0 auto 1.25rem;
     }
 
@@ -255,7 +280,8 @@
       text-align: center;
     }
 
-    .contact-item a, .contact-item p {
+    .contact-item a,
+    .contact-item p {
       font-size: clamp(0.95rem, 1.6vw, 1.05rem);
       font-weight: 500;
       color: var(--color-text);
@@ -285,6 +311,7 @@
       main {
         padding: 1.25rem;
       }
+
       .avatar {
         width: 120px;
         height: 120px;
@@ -299,8 +326,8 @@
     <img src="./42ad.png" alt="42 Abu Dhabi Logo">
     <div class="orb"></div>
     <div class="ring"></div>
-    <div class="loading-text" id="loadingText">Booting System...</div>
-    <div class="progress-bar"><div class="progress-fill"></div></div>
+    <!-- <div class="loading-text" id="loadingText">Booting System...</div> -->
+    <!-- <div class="progress-bar"><div class="progress-fill"></div></div> -->
   </div>
 
   <!-- HEADER -->
@@ -318,11 +345,18 @@
       <div class="bio">Chief Technology and Pedagogy Officer</div>
 
       <section class="contact-info-section">
-        <div class="contact-item"><i class="fas fa-phone-alt"></i><p>+971544110246</p></div>
-        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a></div>
-        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><p>Abu Dhabi, UAE</p></div>
-        <div class="contact-item"><i class="fas fa-globe"></i><a href="https://42abudhabi.ae" target="_blank">42abudhabi.ae</a></div>
-        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a></div>
+        <div class="contact-item"><i class="fas fa-phone-alt"></i>
+          <p>+971544110246</p>
+        </div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a
+            href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i>
+          <p>Abu Dhabi, UAE</p>
+        </div>
+        <div class="contact-item"><i class="fas fa-globe"></i><a href="https://42abudhabi.ae"
+            target="_blank">42abudhabi.ae</a></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i><a
+            href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a></div>
       </section>
 
       <a class="btn-download" href="#" onclick="saveContact()">
@@ -332,31 +366,29 @@
   </div>
 
   <script>
-    const text = document.getElementById("loadingText");
-    const messages = ["Booting System...", "Initializing Protocols...", "Deploying Interface...", "Ready!"];
-    let i = 0;
-    const messageInterval = setInterval(() => {
-      text.textContent = messages[i];
-      i++;
-      if (i >= messages.length) clearInterval(messageInterval);
-    }, 500);
-
-    window.addEventListener("load", () => {
-      setTimeout(() => {
-        document.getElementById("loader").classList.add("fade-out");
-        setTimeout(() => {
-          document.getElementById("loader").style.display = "none";
-          document.getElementById("mainContent").style.display = "flex";
-        }, 600);
-      }, 2000);
-    });
-
     function saveContact() {
+      // Check if the device is Android
+      var ua = navigator.userAgent || navigator.vendor || window.opera;
+      if (/android/i.test(ua)) {
+        // Use Android intent to open the native "Add Contact" screen with pre-filled details
+        // (Note: Android does not support pre-filling a contact photo via the intent URL)
+        window.location.href = "intent://contacts/people/#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=Abdeljalil%20NACEUR;S.phone=+971544110246;S.email=abdeljalil@42abudhabi.ae;S.postal=Abu%20Dhabi%2C%20UAE;S.note=Chief%20Technology%20and%20Pedagogy%20Officer%20at%2042%20Abu%20Dhabi;S.company=42%20Abu%20Dhabi;S.website=https%3A%2F%2F42abudhabi.ae;end";
+      } else {
+        fallbackSave();
+      }
+    }
+
+    function fallbackSave() {
+      // Replace the following base64 string with your actual base64-encoded JPEG data
+      const base64Photo = "/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAP//////////////////////////////////////////////////////////////////////////////////////2wBDAf//////////////////////////////////////////////////////////////////////////////////////wAARCABkAGQDAREAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAEFBv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/EABYBAQEBAAAAAAAAAAAAAAAAAAABAv/9oADAMBAAIRAxEAPwD7P//Z";
+
       const vCardData = [
         "BEGIN:VCARD",
         "VERSION:3.0",
         "N:NACEUR;Abdeljalil;;;",
         "FN:Abdeljalil NACEUR",
+        // Include the profile photo (replace the base64Photo with your actual data)
+        "PHOTO;ENCODING=BASE64;TYPE=JPEG:" + base64Photo,
         "TEL;TYPE=cell:+971544110246",
         "EMAIL:abdeljalil@42abudhabi.ae",
         "ADR:;;Abu Dhabi;;;UAE",
@@ -366,16 +398,24 @@
         "END:VCARD"
       ].join("\n");
 
-      const blob = new Blob([vCardData], { type: 'text/vcard' });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = 'Abdeljalil_NACEUR.vcf';
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      alert("Download started. Open the downloaded file to add the contact.");
+      // Detect iOS devices
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        // iOS Safari does not support the download attribute so use a data URI
+        window.location.href = "data:text/vcard;charset=utf-8," + encodeURIComponent(vCardData);
+      } else {
+        // For other devices, create a Blob and use the download attribute
+        const blob = new Blob([vCardData], { type: 'text/vcard' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Abdeljalil_NACEUR.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        alert("Download started. Open the downloaded file to add the contact.");
+      }
     }
   </script>
 </body>
+
 </html>
