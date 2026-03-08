@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <title>Abdeljalil NACEUR</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Abdeljalil NACEUR">
+  <meta name="organization" content="42 Abu Dhabi">
+  <meta name="contact:phone" content="+971544110246">
+  <meta name="contact:email" content="abdeljalil@42abudhabi.ae">
+  <meta name="contact:address" content="Abu Dhabi, UAE">
+  <meta name="contact:website" content="https://42abudhabi.ae">
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --color-bg: #000;
+      --color-surface: #1a1a1a;
+      --color-accent: #00ffff;
+      --color-text: #eaeaea;
+      --color-text-muted: #9a9a9a;
+      --radius: 12px;
+      --transition: 0.3s ease;
+      --font-family: "Poppins", sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-family);
+      background-color: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color var(--transition);
+    }
+
+    a:hover {
+      color: #7ffcff;
+    }
+
+    /* ========= GAMIFIED LOADER ========= */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, #000 40%, #02121f 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      color: var(--color-accent);
+      text-align: center;
+    }
+
+    #loader img {
+      width: 120px;
+      margin-bottom: 20px;
+      filter: drop-shadow(0 0 15px rgba(0,255,255,0.7));
+      animation: logoGlow 2s ease-in-out infinite alternate;
+    }
+
+    @keyframes logoGlow {
+      0% { opacity: 0.6; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1.02); }
+    }
+
+    .orb {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,255,255,0.3), rgba(0,255,255,0.05));
+      box-shadow: 0 0 25px var(--color-accent), inset 0 0 20px rgba(0,255,255,0.3);
+      animation: spinOrb 2s linear infinite;
+    }
+
+    .ring {
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border: 2px solid rgba(0,255,255,0.4);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: rotateRing 2s linear infinite;
+    }
+
+    .ring::after {
+      content: "";
+      position: absolute;
+      top: -6px;
+      left: 50%;
+      width: 10px;
+      height: 10px;
+      background: var(--color-accent);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      box-shadow: 0 0 10px var(--color-accent);
+    }
+
+    @keyframes spinOrb {
+      0% { transform: rotateY(0deg) rotateX(0deg); }
+      100% { transform: rotateY(360deg) rotateX(360deg); }
+    }
+
+    @keyframes rotateRing {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .loading-text {
+      margin-top: 24px;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      letter-spacing: 2px;
+      text-shadow: 0 0 8px var(--color-accent);
+      animation: flicker 1.2s infinite alternate;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    .progress-bar {
+      width: 180px;
+      height: 8px;
+      background: rgba(0,255,255,0.1);
+      border-radius: 10px;
+      margin-top: 16px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--color-accent);
+      animation: fillBar 2s linear forwards;
+    }
+
+    @keyframes fillBar {
+      to { width: 100%; }
+    }
+
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+      pointer-events: none;
+    }
+
+    /* ========= HEADER ========= */
+    .header {
+      background-color: rgba(0,0,0,0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header img {
+      width: 90px;
+      filter: brightness(1);
+      transition: transform var(--transition);
+    }
+
+    .header img:hover {
+      transform: scale(1.05);
+    }
+
+    /* ========= LAYOUT ========= */
+    .container {
+      display: flex;
+      justify-content: center;
+      padding: clamp(1rem, 3vw, 2rem);
+    }
+
+    main {
+      background-image: url('main-anim.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius);
+      padding: clamp(1.5rem, 4vw, 2rem);
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.05);
+    }
+
+    .avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,0.15);
+      margin: 0 auto 1.25rem;
+    }
+
+    h4 {
+      font-weight: 600;
+      font-size: clamp(1.5rem, 2.5vw, 1.8rem);
+      margin-bottom: 0.25rem;
+      color: #fff;
+    }
+
+    .bio {
+      color: var(--color-text-muted);
+      font-size: clamp(1rem, 1.8vw, 1.1rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-info-section {
+      background: rgba(31, 31, 31, 0.9);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #212425;
+      border-radius: var(--radius);
+      padding: 0.75rem 1rem;
+      transition: background var(--transition);
+    }
+
+    .contact-item:hover {
+      background: rgba(0, 255, 255, 0.1);
+    }
+
+    .contact-item i {
+      font-size: 1.3em;
+      color: var(--color-accent);
+      min-width: 24px;
+      text-align: center;
+    }
+
+    .contact-item a, .contact-item p {
+      font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+      font-weight: 500;
+      color: var(--color-text);
+      margin: 0;
+    }
+
+    .btn-download {
+      background: var(--color-accent);
+      color: #000;
+      font-weight: 600;
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--radius);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 1rem;
+      transition: all var(--transition);
+    }
+
+    .btn-download:hover {
+      background: #7ffcff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 480px) {
+      main {
+        padding: 1.25rem;
+      }
+      .avatar {
+        width: 120px;
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- GAMIFIED LOADER -->
+  <div id="loader">
+    <img src="./42ad.png" alt="42 Abu Dhabi Logo">
+    <div class="orb"></div>
+    <div class="ring"></div>
+    <!-- <div class="loading-text" id="loadingText">Booting System...</div> -->
+    <!-- <div class="progress-bar"><div class="progress-fill"></div></div> -->
+  </div>
+
+  <!-- HEADER -->
+  <!-- <header class="header">
+    <a href="https://42abudhabi.ae">
+      <img src="./42ad.png" alt="42 Abu Dhabi Logo">
+    </a>
+  </header> -->
+
+  <!-- MAIN -->
+  <div class="container" id="mainContent" style="display:none;">
+    <main>
+      <img class="avatar" src="./profile-3.png" alt="Abdeljalil NACEUR">
+      <h4>Abdeljalil NACEUR</h4>
+      <div class="bio">Chief Technology and Pedagogy Officer</div>
+
+      <section class="contact-info-section">
+        <div class="contact-item"><i class="fas fa-phone-alt"></i><p>+971544110246</p></div>
+        <div class="contact-item"><i class="fas fa-envelope"></i><a href="mailto:abdeljalil@42abudhabi.ae">abdeljalil@42abudhabi.ae</a></div>
+        <div class="contact-item"><i class="fas fa-map-marker-alt"></i><p>Abu Dhabi, UAE</p></div>
+        <div class="contact-item"><i class="fas fa-globe"></i><a href="https://42abudhabi.ae" target="_blank">42abudhabi.ae</a></div>
+        <div class="contact-item"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/abdeljalil-naceur-837113184/" target="_blank">LinkedIn</a></div>
+      </section>
+
+      <a class="btn-download" href="#" onclick="saveContact()">
+        <i class="fas fa-download"></i> Save Information
+      </a>
+    </main>
+  </div>
+
+  <script>
+    const text = document.getElementById("loadingText");
+    const messages = ["Booting System...", "Initializing Protocols...", "Deploying Interface...", "Ready!"];
+    let i = 0;
+    const messageInterval = setInterval(() => {
+      text.textContent = messages[i];
+      i++;
+      if (i >= messages.length) clearInterval(messageInterval);
+    }, 500);
+
+    window.addEventListener("load", () => {
+      setTimeout(() => {
+        document.getElementById("loader").classList.add("fade-out");
+        setTimeout(() => {
+          document.getElementById("loader").style.display = "none";
+          document.getElementById("mainContent").style.display = "flex";
+        }, 600);
+      }, 2000);
+    });
+
+    function saveContact() {
+      const vCardData = [
+        "BEGIN:VCARD",
+        "VERSION:3.0",
+        "N:NACEUR;Abdeljalil;;;",
+        "FN:Abdeljalil NACEUR",
+        "TEL;TYPE=cell:+971544110246",
+        "EMAIL:abdeljalil@42abudhabi.ae",
+        "ADR:;;Abu Dhabi;;;UAE",
+        "NOTE:Chief Technology and Pedagogy Officer at 42 Abu Dhabi",
+        "ORG:42 Abu Dhabi",
+        "URL:https://42abudhabi.ae",
+        "END:VCARD"
+      ].join("\n");
+
+      const blob = new Blob([vCardData], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'Abdeljalil_NACEUR.vcf';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      alert("Download started. Open the downloaded file to add the contact.");
+    }
+  </script>
+</body>
+</html>
