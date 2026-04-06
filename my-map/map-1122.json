@@ -209,7 +209,17 @@
                         }]
                 }],
          "tilewidth":32
-        }, 
+        },
+        {
+              "firstgid": 1,
+              "image": "https://abnaceur.github.io/my-map/map_resized.png",
+              "imagewidth": 4096,
+              "imageheight": 4096,
+              "tilewidth": 64,
+              "tileheight": 64,
+              "columns": 64,
+              "tilecount": 4096
+       },
         {
          "columns":12,
          "firstgid":13,
