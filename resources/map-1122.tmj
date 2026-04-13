@@ -951,12 +951,30 @@
          "tilewidth":32
         }, 
         {
+         "columns":16,
          "firstgid":2683,
-         "source":"..\/..\/resources\/assets\/tilesets\/tiledConverted\/1122-assets.tsx"
+         "image":"..\/..\/resources\/assets\/tilesets\/1122-assets.png",
+         "imageheight":192,
+         "imagewidth":520,
+         "margin":0,
+         "name":"1122-assets",
+         "spacing":0,
+         "tilecount":96,
+         "tileheight":32,
+         "tilewidth":32
         }, 
         {
+         "columns":40,
          "firstgid":2779,
-         "source":"..\/..\/resources\/assets\/tilesets\/tiledConverted\/Full Spritesheet.tsx"
+         "image":"..\/..\/resources\/assets\/tilesets\/Big 32x32 Tileset\/Single Sprite\/Full Spritesheet.png",
+         "imageheight":1184,
+         "imagewidth":1280,
+         "margin":0,
+         "name":"Full Spritesheet",
+         "spacing":0,
+         "tilecount":1480,
+         "tileheight":32,
+         "tilewidth":32
         }],
  "tilewidth":32,
  "type":"map",
